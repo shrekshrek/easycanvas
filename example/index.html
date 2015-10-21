@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="../easycanvas.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+
+<canvas id="show" width="800" height="800"></canvas>
+
+<script>
+    var s = new EC.Stage({el: document.getElementById('show')});
+    var b = new EC.Bitmap();
+    b.x = 200;
+    b.y = 400;
+    b.scaleX = b.scaleY = 1;
+    b.rotation = 45;
+    s.addChild(b);
+
+
+    var g = new EC.Graphic();
+    g.x = 100;
+    g.y = -100;
+    g.scaleX = g.scaleY = 1.5;
+    g.rotation = 15;
+    g.beginPath();
+    g.rect(0,0,200,200);
+    g.closePath();
+    g.fill('#ff0000');
+    s.addChild(g);
+
+
+    var _img = new Image();
+    _img.src = "images/p2.jpg";
+    _img.onload = function () {
+        b.image = this;
+        s.update();
+    };
+
+</script>
+</body>
+</html>
