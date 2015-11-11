@@ -1,5 +1,5 @@
 /*!
- * VERSION: 0.3.0
+ * VERSION: 0.1.0
  * DATE: 2015-08-25
  * GIT:https://github.com/shrekshrek/easycanvas
  *
@@ -90,7 +90,7 @@
     EC.TEXT_BASELINE_MAP = ["alphabetic", "top", "hanging", "middle", "ideographic", "bottom"];
 
     EC.Object = function () {
-        this.init.apply(this, arguments);
+        this.initialize.apply(this, arguments);
     };
 
     extend(EC.Object.prototype, {
@@ -165,7 +165,7 @@
             return this;
         },
 
-        init: function () {
+        initialize: function () {
             this.x = 0;
             this.y = 0;
             this.rotation = 0;
@@ -260,8 +260,8 @@
     EC.Stage = EC.Sprite.extend({
         el: null,
         ctx: null,
-        init: function (params) {
-            EC.Stage.__super__.init.apply(this, [params]);
+        initialize: function (params) {
+            EC.Stage.__super__.initialize.apply(this, [params]);
 
             var _dom;
             if (params && params.el) {
@@ -287,8 +287,8 @@
 
     EC.Bitmap = EC.Sprite.extend({
         image: null,
-        init: function (params) {
-            EC.Stage.__super__.init.apply(this, [params]);
+        initialize: function (params) {
+            EC.Stage.__super__.initialize.apply(this, [params]);
 
             if (params && params.image) {
                 this.image = params.image;
@@ -328,8 +328,8 @@
 
     EC.Graphic = EC.Sprite.extend({
         actions: [],
-        init: function (params) {
-            EC.Graphic.__super__.init.apply(this, [params]);
+        initialize: function (params) {
+            EC.Graphic.__super__.initialize.apply(this, [params]);
 
             this.actions = [];
         },
@@ -402,8 +402,8 @@
 
     EC.Text = EC.Sprite.extend({
         actions: [],
-        init: function (params) {
-            EC.Text.__super__.init.apply(this, [params]);
+        initialize: function (params) {
+            EC.Text.__super__.initialize.apply(this, [params]);
 
             this.actions = [];
         },
