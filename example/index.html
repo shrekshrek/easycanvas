@@ -11,13 +11,13 @@
 
 <script>
     var s = new EC.Stage({el: document.getElementById('show')});
+
     var b = new EC.Bitmap();
     b.x = 200;
     b.y = 400;
     b.scaleX = b.scaleY = 1;
     b.rotation = 45;
     s.addChild(b);
-
 
     var g = new EC.Graphic();
     g.x = 100;
@@ -31,11 +31,23 @@
     s.addChild(g);
 
 
+    var m = new EC.Bitmap();
+    m.origin(0,0);
+    s.mask = m;
+
+
     var _img = new Image();
     _img.src = "images/p2.jpg";
     _img.onload = function () {
         b.image = this;
-        s.update();
+
+        var _img2 = new Image();
+        _img2.src = "images/mask.png";
+        _img2.onload = function () {
+            m.image = this;
+            s.update();
+        };
+//        s.update();
     };
 
 </script>

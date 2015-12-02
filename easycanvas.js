@@ -260,6 +260,7 @@
     EC.Stage = EC.Sprite.extend({
         el: null,
         ctx: null,
+        mask: null,
         initialize: function (params) {
             EC.Stage.__super__.initialize.apply(this, [params]);
 
@@ -280,6 +281,13 @@
             this.ctx.save();
             this.childUpdate(this.ctx);
             this.ctx.restore();
+
+            if(this.mask != null){
+                this.ctx.globalCompositeOperation = 'destination-in';
+                this.mask.update(this.ctx);
+                this.ctx.globalCompositeOperation = 'source-over';
+            }
+
             return this;
         }
     });
@@ -441,9 +449,9 @@
     });
 
 
+    //---------------------------------------------------------------------------graphic
     var G = {};
 
-    //---------------------------------------------------------------------------graphic
     (G.fill = function (style) {
         this.style = style;
     }).prototype.update = function (ctx) {
