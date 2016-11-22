@@ -1,34 +1,23 @@
 /*!
  * VERSION: 0.1.0
  * DATE: 2015-08-25
- * GIT:https://github.com/shrekshrek/easycanvas
- *
- * @author: Shrek.wang, shrekshrek@gmail.com
+ * GIT: https://github.com/shrekshrek/easycanvas
+ * @author: Shrek.wang
  **/
 
 (function (factory) {
-    var root = (typeof self == 'object' && self.self == self && self) ||
-        (typeof global == 'object' && global.global == global && global);
 
     if (typeof define === 'function' && define.amd) {
-        define(['exports'], function (exports) {
-            root.EC = factory(root, exports);
+        define(['exports'], function(exports) {
+            window.EC = factory(exports);
         });
     } else if (typeof exports !== 'undefined') {
-        factory(root, exports);
+        factory(exports);
     } else {
-        root.EC = factory(root, {});
+        window.EC = factory({});
     }
 
-}(function (root, EC) {
-    var previousEC = root.EC;
-
-    EC.VERSION = '0.1.0';
-
-    EC.noConflict = function () {
-        root.EC = previousEC;
-        return this;
-    };
+}(function (EC) {
 
     // --------------------------------------------------------------------extend
     var keys = function (obj) {
